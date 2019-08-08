@@ -170,7 +170,7 @@ class Scheme(object):
         """
 
         subprocess.check_output(['/sbin/ifconfig', self.interface, 'down'], stderr=subprocess.STDOUT)
-        ifup_output = subprocess.check_output(['/sbin/ifconfig', 'up'] + self.as_args(), stderr=subprocess.STDOUT)
+        ifup_output = subprocess.check_output(['/sbin/ifconfig', self.interface, 'up'] + self.as_args(), stderr=subprocess.STDOUT)
         ifup_output = ifup_output.decode('utf-8')
 
         return self.parse_ifup_output(ifup_output)
