@@ -169,8 +169,8 @@ class Scheme(object):
         Connects to the network as configured in this scheme.
         """
 
-        subprocess.check_output(['/sbin/ifconfig', self.interface,'down'], stderr=subprocess.STDOUT)
-        ifup_output = subprocess.check_output(['/sbin/ifup'] + self.as_args(), stderr=subprocess.STDOUT)
+        subprocess.check_output(['/sbin/ifconfig', self.interface, 'down'], stderr=subprocess.STDOUT)
+        ifup_output = subprocess.check_output(['/sbin/ifconfig', 'up'] + self.as_args(), stderr=subprocess.STDOUT)
         ifup_output = ifup_output.decode('utf-8')
 
         return self.parse_ifup_output(ifup_output)
